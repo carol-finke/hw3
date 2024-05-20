@@ -1,12 +1,12 @@
 class EntriesController < ApplicationController
   def new
     @place = Place.find(params[:place_id])
-    @entry = @place.entries.new
+    @entry = @place.entries.build
   end
 
   def create
     @place = Place.find(params[:place_id])
-    @entry = @place.entries.new(entry_params)
+    @entry = @place.entries.build(entry_params)
     if @entry.save
       redirect_to place_path(@place)
     else
@@ -17,6 +17,6 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:title, :description, :posted_on)
+    params.require(:entry).permit(:title, :content, :posted_on, :place_id)
   end
 end

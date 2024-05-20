@@ -6,3 +6,6 @@
 </ul>
 <%= link_to 'Add New Entry', new_place_entry_path(@place) %>
 <%= link_to 'Back to Places', places_path %>
+<p>
+  <%= button_to 'Delete this place', place_path(@place), method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
